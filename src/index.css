@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+canvas {
+  display: block;
+}
+
+/* HUD Styles */
+.hud {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 30px;
+  font-family: 'Courier New', monospace;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hud-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.hud-item .label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.hud-item .value {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hud-item.health {
+  color: #f00;
+}
+
+.hud-item.ammo {
+  color: #0ff;
+}
+
+/* Crosshair */
+.crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.crosshair::before {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.crosshair::after {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+/* Instructions overlay */
+.instructions {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #ffe81f;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 10px #ffe81f;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.instructions p {
+  margin: 5px 0;
+}
+
+.instructions p:first-child {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.instructions p:last-child {
+  font-size: 12px;
+  opacity: 0.7;
+}
