@@ -1,5 +1,7 @@
 # 🌌 Imperial Base
 
+(IN PROGRESS)
+
 A high-fidelity 3D FPS experience inspired by GoldenEye 007 mechanics, set within a Star Wars Imperial hangar.
 
 ## 🕹️ [LIVE DEMO: PLAY NOW](https://imperial-base.vercel.app)
