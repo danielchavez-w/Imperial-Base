@@ -36,27 +36,14 @@ export default function App() {
   return (
     <>
       <Canvas
-        shadows
         camera={{ fov: 75, near: 0.1, far: 1000 }}
         style={{ background: '#000' }}
       >
-        {/* Lighting */}
-        <ambientLight intensity={0.3} />
-        <directionalLight
-          position={[10, 20, 10]}
-          intensity={1}
-          castShadow
-          shadow-mapSize={[2048, 2048]}
-          shadow-camera-far={50}
-          shadow-camera-left={-25}
-          shadow-camera-right={25}
-          shadow-camera-top={25}
-          shadow-camera-bottom={-25}
-        />
-        <pointLight position={[0, 5, 0]} intensity={0.5} color="#0ff" />
+        {/* Lighting — low ambient, point lights create drama */}
+        <ambientLight intensity={0.1} />
 
         {/* Fog for atmosphere */}
-        <fog attach="fog" args={['#000', 10, 50]} />
+        <fog attach="fog" args={['#000', 15, 70]} />
 
         {/* Physics world */}
         <Physics gravity={[0, -20, 0]}>

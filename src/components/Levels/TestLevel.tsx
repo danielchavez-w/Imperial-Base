@@ -1,86 +1,35 @@
-import { RigidBody } from '@react-three/rapier'
+import { HangarWall } from '../Environment/HangarWall'
+import { HangarFloor } from '../Environment/HangarFloor'
+import { HangarCeiling } from '../Environment/HangarCeiling'
+import { HangarOpening } from '../Environment/HangarOpening'
+import { Starfield } from '../Environment/Starfield'
+import { OuterHull } from '../Environment/OuterHull'
 
 export function TestLevel() {
   return (
     <group>
+      {/* Star-blocking outer hull — only the south opening lets stars through */}
+      <OuterHull />
+
       {/* Floor */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-          <planeGeometry args={[50, 50]} />
-          <meshStandardMaterial color="#1a1a2e" />
-        </mesh>
-      </RigidBody>
+      <HangarFloor />
 
-      {/* Walls */}
-      {/* North wall */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[0, 2, -25]} castShadow receiveShadow>
-          <boxGeometry args={[50, 4, 0.5]} />
-          <meshStandardMaterial color="#16213e" />
-        </mesh>
-      </RigidBody>
+      {/* Ceiling */}
+      <HangarCeiling />
 
-      {/* South wall */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[0, 2, 25]} castShadow receiveShadow>
-          <boxGeometry args={[50, 4, 0.5]} />
-          <meshStandardMaterial color="#16213e" />
-        </mesh>
-      </RigidBody>
+      {/* North wall (solid) */}
+      <HangarWall position={[0, 0, -25]} />
+
+      {/* South wall (with opening to space) */}
+      <HangarWall position={[0, 0, 25]} rotation={[0, Math.PI, 0]} hasOpening />
+      <HangarOpening position={[0, 0, 25]} />
+      <Starfield />
 
       {/* East wall */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[25, 2, 0]} castShadow receiveShadow>
-          <boxGeometry args={[0.5, 4, 50]} />
-          <meshStandardMaterial color="#16213e" />
-        </mesh>
-      </RigidBody>
+      <HangarWall position={[25, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
 
       {/* West wall */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[-25, 2, 0]} castShadow receiveShadow>
-          <boxGeometry args={[0.5, 4, 50]} />
-          <meshStandardMaterial color="#16213e" />
-        </mesh>
-      </RigidBody>
-
-      {/* Some obstacles for collision testing */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[5, 1, -5]} castShadow receiveShadow>
-          <boxGeometry args={[2, 2, 2]} />
-          <meshStandardMaterial color="#0f3460" />
-        </mesh>
-      </RigidBody>
-
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[-8, 0.5, 3]} castShadow receiveShadow>
-          <boxGeometry args={[4, 1, 4]} />
-          <meshStandardMaterial color="#0f3460" />
-        </mesh>
-      </RigidBody>
-
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[10, 1.5, 10]} castShadow receiveShadow>
-          <boxGeometry args={[3, 3, 3]} />
-          <meshStandardMaterial color="#0f3460" />
-        </mesh>
-      </RigidBody>
-
-      {/* Ramp for testing slopes */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[-5, 0.5, -10]} rotation={[0.3, 0, 0]} castShadow receiveShadow>
-          <boxGeometry args={[4, 0.2, 6]} />
-          <meshStandardMaterial color="#e94560" />
-        </mesh>
-      </RigidBody>
-
-      {/* Pillar */}
-      <RigidBody type="fixed" colliders="cuboid">
-        <mesh position={[0, 2, 0]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.5, 0.5, 4, 8]} />
-          <meshStandardMaterial color="#533483" />
-        </mesh>
-      </RigidBody>
+      <HangarWall position={[-25, 0, 0]} rotation={[0, Math.PI / 2, 0]} />
     </group>
   )
 }
