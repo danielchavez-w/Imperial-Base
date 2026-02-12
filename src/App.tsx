@@ -1,5 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/rapier'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Player } from './components/Player'
 import { TestLevel } from './components/Levels/TestLevel'
 import { useGameStore } from './stores/useGameStore'
@@ -50,6 +51,16 @@ export default function App() {
           <Player />
           <TestLevel />
         </Physics>
+
+        {/* Cinematic bloom — only bright emissives (PillLights, opening borders) glow */}
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={1.0}
+            luminanceSmoothing={0.9}
+            intensity={0.6}
+            mipmapBlur
+          />
+        </EffectComposer>
       </Canvas>
 
       <HUD />
