@@ -4,9 +4,14 @@ A high-fidelity 3D FPS experience inspired by GoldenEye 007 mechanics, set withi
 
 ## 🕹️ [LIVE DEMO: PLAY NOW](https://imperial-base.vercel.app)
 
-> **PC MASTER RACE REQUIRED:** This project is optimized for high-end hardware (tested on RTX 5070 / Ryzen 7600X3D). It utilizes heavy post-processing, and cinematic fog.
+> **HIGH-END HARDWARE REQUIRED:** This project is optimized for high-end hardware (tested on RTX 5070 / Ryzen 7600X3D). It utilizes heavy post-processing, and cinematic fog.
 
 ---
+
+## ⌨️ Controls
+* **WASD**: Move
+* **Mouse**: Free Look
+* **Space**: Jump
 
 ## 🛠️ Tech Stack
 * **Framework:** React + Vite
