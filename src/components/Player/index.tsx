@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { RigidBody, CapsuleCollider, RapierRigidBody } from '@react-three/rapier'
 import { PointerLockControls } from '@react-three/drei'
-import { Vector3, Euler } from 'three'
+import { Vector3 } from 'three'
 import type { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 
 const MOVE_SPEED = 5
